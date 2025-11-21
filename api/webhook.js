@@ -2,7 +2,7 @@ export default function handler(req, res) {
 
   const VERIFY_TOKEN = "mysecretkey";
 
-  // WEBHOOK VERIFICATION (GET)
+  // Webhook Verification
   if (req.method === "GET") {
     const mode = req.query["hub.mode"];
     const token = req.query["hub.verify_token"];
@@ -12,11 +12,11 @@ export default function handler(req, res) {
       console.log("WEBHOOK VERIFIED");
       return res.status(200).send(challenge);
     } else {
-      return res.status(403).send("Token verification failed");
+      return res.status(403).send("Verification failed");
     }
   }
 
-  // RECEIVING MESSAGES (POST)
+  // Receiving messages
   if (req.method === "POST") {
     console.log("Incoming message:", JSON.stringify(req.body, null, 2));
     return res.status(200).send("EVENT_RECEIVED");
@@ -24,3 +24,4 @@ export default function handler(req, res) {
 
   return res.status(405).send("Method Not Allowed");
 }
+
