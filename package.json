@@ -1,13 +1,7 @@
 {
-  "name": "minimind-backend",
+  "name": "minimind-bk",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "node index.js"
-  },
   "dependencies": {
-    "express": "latest",
-    "body-parser": "latest"
+    "@vercel/node": "^3.0.0"
   }
 }
