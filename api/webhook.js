@@ -1,3 +1,4 @@
+// Disable body parser (required for Meta webhook)
 export const config = {
   api: {
     bodyParser: false,
@@ -5,7 +6,6 @@ export const config = {
 };
 
 export default function handler(req, res) {
-
   const VERIFY_TOKEN = "mysecretkey";
 
   // Webhook Verification
@@ -24,11 +24,9 @@ export default function handler(req, res) {
 
   // Receiving messages
   if (req.method === "POST") {
-    console.log("Incoming message:", JSON.stringify(req.body, null, 2));
+    console.log("Incoming message: ", JSON.stringify(req.body, null, 2));
     return res.status(200).send("EVENT_RECEIVED");
   }
 
   return res.status(405).send("Method Not Allowed");
 }
-
-
