@@ -1,7 +1,7 @@
 export default function handler(req, res) {
   const VERIFY_TOKEN = "mysecretkey";
 
-  // Verification
+  // Verification (GET)
   if (req.method === "GET") {
     const mode = req.query["hub.mode"];
     const token = req.query["hub.verify_token"];
@@ -14,11 +14,12 @@ export default function handler(req, res) {
     }
   }
 
-  // Messages
+  // Receiving messages (POST)
   if (req.method === "POST") {
-    console.log("Incoming:", JSON.stringify(req.body, null, 2));
+    console.log("Incoming message:", JSON.stringify(req.body, null, 2));
     return res.status(200).send("EVENT_RECEIVED");
   }
 
   return res.status(405).send("Method Not Allowed");
 }
+
