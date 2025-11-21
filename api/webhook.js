@@ -1,3 +1,9 @@
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default function handler(req, res) {
 
   const VERIFY_TOKEN = "mysecretkey";
@@ -24,4 +30,5 @@ export default function handler(req, res) {
 
   return res.status(405).send("Method Not Allowed");
 }
+
 
